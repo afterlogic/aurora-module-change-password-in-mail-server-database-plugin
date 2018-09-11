@@ -1,7 +1,7 @@
 # aurora-module-mail-change-password-database-plugin
 Allows users to change passwords on their email accounts, assuming the passwords are stored in a database table.
 
-The plugin only provide a sample functionality stub:
+The plugin only provides a sample functionality stub:
 
 ```php
 $sql = "UPDATE mailbox SET password='".md5($sPassword)."' WHERE username='".$oAccount->IncomingLogin."'";
