@@ -11,7 +11,7 @@ namespace Aurora\Modules\ChangePasswordInMailServerDatabasePlugin;
  *
  * @license https://www.gnu.org/licenses/agpl-3.0.html AGPL-3.0
  * @license https://afterlogic.com/products/common-licensing AfterLogic Software License
- * @copyright Copyright (c) 2018, Afterlogic Corp.
+ * @copyright Copyright (c) 2019, Afterlogic Corp.
  *
  * @package Modules
  */
@@ -23,8 +23,6 @@ class Module extends \Aurora\System\Module\AbstractModule
 	
 	public function init() 
 	{
-		$this->oMailModule = \Aurora\System\Api::GetModule('Mail');
-	
 		$this->subscribeEvent('Mail::ChangePassword::before', array($this, 'onBeforeChangePassword'));
 	}
 	
@@ -37,7 +35,7 @@ class Module extends \Aurora\System\Module\AbstractModule
 	{
 		$mResult = true;
 		
-		$oAccount = $this->oMailModule->GetAccount($aArguments['AccountId']);
+		$oAccount = $this->getMailModule()->GetAccount($aArguments['AccountId']);
 
 		if ($oAccount && $this->checkCanChangePassword($oAccount))
 		{
@@ -125,4 +123,12 @@ class Module extends \Aurora\System\Module\AbstractModule
 		$this->saveModuleConfig();
 		return true;
 	}
+
+	protected function getMailModule()
+	{
+		if (!$this->oMailModule)
+		{
+			$this->oMailModule = \Aurora\System\Api::GetModule('Mail');
+		}
+	}	
 }
