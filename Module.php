@@ -39,7 +39,7 @@ class Module extends \Aurora\System\Module\AbstractModule
 		
 		$oAccount = $this->getMailModule()->GetAccount($aArguments['AccountId']);
 
-		if ($oAccount && $this->checkCanChangePassword($oAccount))
+		if ($oAccount && $this->checkCanChangePassword($oAccount) && $oAccount->getPassword() === $aArguments['CurrentPassword'])
 		{
 			$mResult = $this->сhangePassword($oAccount, $aArguments['NewPassword']);
 		}
@@ -55,7 +55,7 @@ class Module extends \Aurora\System\Module\AbstractModule
 		
 		if (!$bFound)
 		{
-			$oServer = $this->oMailModule->GetServer($oAccount->ServerId);
+			$oServer = $this->getMailModule()->GetServer($oAccount->ServerId);
 			if ($oServer && in_array($oServer->Name, $this->getConfig('SupportedServers')))
 			{
 				$bFound = true;
@@ -71,7 +71,7 @@ class Module extends \Aurora\System\Module\AbstractModule
 	protected function сhangePassword($oAccount, $sPassword)
 	{
 	    $bResult = false;
-	    if (0 < strlen($oAccount->IncomingPassword) && $oAccount->IncomingPassword !== $sPassword )
+	    if (0 < strlen($oAccount->getPassword()) && $oAccount->getPassword() !== $sPassword )
 	    {
 			$config_dbuser = $this->getConfig('DbUser','');
 			$config_dbpass = $this->getConfig('DbPass','');
