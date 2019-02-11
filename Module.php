@@ -17,6 +17,8 @@ namespace Aurora\Modules\ChangePasswordInMailServerDatabasePlugin;
  */
 class Module extends \Aurora\System\Module\AbstractModule
 {
+	protected $oMailModule = null;
+	
 	/**
 	 * @param CApiPluginManager $oPluginManager
 	 */
@@ -130,5 +132,7 @@ class Module extends \Aurora\System\Module\AbstractModule
 		{
 			$this->oMailModule = \Aurora\System\Api::GetModule('Mail');
 		}
+		
+		return $this->oMailModule;
 	}	
 }
