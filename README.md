@@ -20,4 +20,4 @@ In the same file, you need to provide MySQL credentials used to access the datab
 Also, be sure to enable password change frontend module by setting **Disabled** to **false** in `data/settings/modules/ChangePasswordWebclient.config.json` file.
 
 # License
-This module is licensed under AGPLv3 license if free version of the product is used or AfterLogic Software License if commercial version of the product was purchased. 
+This module is licensed under AGPLv3 license if free version of the product is used or Afterlogic Software License if commercial version of the product was purchased. 
