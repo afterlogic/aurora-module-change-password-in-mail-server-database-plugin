@@ -54,7 +54,10 @@ class Module extends \Aurora\System\Module\AbstractModule
 		$bBreakSubscriptions = false;
 		
 		$oAccount = $aArguments['Account'];
-		if ($oAccount && $this->checkCanChangePassword($oAccount) && $oAccount->getPassword() === $aArguments['CurrentPassword'])
+		$oUser = \Aurora\System\Api::getAuthenticatedUser();
+			
+		if ($oAccount && $this->checkCanChangePassword($oAccount) && 
+			($oUser->Role === \Aurora\System\Enums\UserRole::SuperAdmin || $oAccount->getPassword() === $aArguments['CurrentPassword']))
 		{
 			$bPasswordChanged = $this->changePassword($oAccount, $aArguments['NewPassword']);
 			$bBreakSubscriptions = true; // break if mail server plugin tries to change password in this account. 
