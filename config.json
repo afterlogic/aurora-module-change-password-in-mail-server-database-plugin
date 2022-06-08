@@ -1,52 +1,52 @@
 {
-  "Disabled": [
-    false,
-    "bool"
-  ],
-  "Disabled_Description": [
-    "",
-    "string"
-  ],
-  "SupportedServers": [
-    [
-      "*"
-    ],
-    "array"
-  ],
-  "SupportedServers_Description": [
-    "",
-    "string"
-  ],
-  "DbUser": [
-    "",
-    "string"
-  ],
-  "DbUser_Description": [
-    "",
-    "string"
-  ],
-  "DbPass": [
-    "",
-    "string"
-  ],
-  "DbPass_Description": [
-    "",
-    "string"
-  ],
-  "DbName": [
-    "",
-    "string"
-  ],
-  "DbName_Description": [
-    "",
-    "string"
-  ],
-  "DbHost": [
-    "localhost",
-    "string"
-  ],
-  "DbHost_Description": [
-    "",
-    "string"
-  ]
+	"Disabled": [
+		false,
+		"bool"
+	],
+	"Disabled_Description": [
+		"",
+		"string"
+	],
+	"SupportedServers": [
+		[
+			"*"
+		],
+		"array"
+	],
+	"SupportedServers_Description": [
+		"",
+		"string"
+	],
+	"DbUser": [
+		"",
+		"string"
+	],
+	"DbUser_Description": [
+		"",
+		"string"
+	],
+	"DbPass": [
+		"",
+		"string"
+	],
+	"DbPass_Description": [
+		"",
+		"string"
+	],
+	"DbName": [
+		"",
+		"string"
+	],
+	"DbName_Description": [
+		"",
+		"string"
+	],
+	"DbHost": [
+		"localhost",
+		"string"
+	],
+	"DbHost_Description": [
+		"",
+		"string"
+	]
 }
