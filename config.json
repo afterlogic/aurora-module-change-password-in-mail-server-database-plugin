@@ -4,7 +4,7 @@
 		"bool"
 	],
 	"Disabled_Description": [
-		"",
+		"Setting to true disables the module",
 		"string"
 	],
 	"SupportedServers": [
@@ -14,7 +14,7 @@
 		"array"
 	],
 	"SupportedServers_Description": [
-		"",
+		"Mailserver hostnames or IP addresses the feature is enabled for, * enables the feature for all accounts.",
 		"string"
 	],
 	"DbUser": [
@@ -22,7 +22,7 @@
 		"string"
 	],
 	"DbUser_Description": [
-		"",
+		"User of database used by mailserver for storing credentials",
 		"string"
 	],
 	"DbPass": [
@@ -30,7 +30,7 @@
 		"string"
 	],
 	"DbPass_Description": [
-		"",
+		"Password of database used by mailserver for storing credentials",
 		"string"
 	],
 	"DbName": [
@@ -38,7 +38,7 @@
 		"string"
 	],
 	"DbName_Description": [
-		"",
+		"Name of database used by mailserver for storing credentials",
 		"string"
 	],
 	"DbHost": [
@@ -46,7 +46,7 @@
 		"string"
 	],
 	"DbHost_Description": [
-		"",
+		"Hostname of database server used by mailserver for storing credentials",
 		"string"
 	]
 }
