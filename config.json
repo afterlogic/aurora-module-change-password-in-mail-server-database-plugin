@@ -14,7 +14,7 @@
 		"array"
 	],
 	"SupportedServers_Description": [
-		"Mailserver hostnames or IP addresses the feature is enabled for, * enables the feature for all accounts.",
+		"If IMAP Server value of the mailserver is in this list, password change is enabled for it. * enables it for all the servers.",
 		"string"
 	],
 	"DbUser": [
