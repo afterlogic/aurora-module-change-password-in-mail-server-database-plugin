@@ -13,6 +13,8 @@ namespace Aurora\Modules\ChangePasswordInMailServerDatabasePlugin;
  * @license https://www.gnu.org/licenses/agpl-3.0.html AGPL-3.0
  * @license https://afterlogic.com/products/common-licensing Afterlogic Software License
  * @copyright Copyright (c) 2023, Afterlogic Corp.
+ * 
+ * @property Settings $oModuleSettings
  *
  * @package Modules
  */
@@ -31,15 +33,6 @@ class Module extends \Aurora\System\Module\AbstractModule
     public static function Decorator()
     {
         return parent::Decorator();
-    }
-
-    /**
-     *
-     * @return Settings
-     */
-    public function getModuleSettings()
-    {
-        return $this->oModuleSettings;
     }
 
     /**
@@ -89,12 +82,12 @@ class Module extends \Aurora\System\Module\AbstractModule
      */
     protected function checkCanChangePassword($oAccount)
     {
-        $bFound = in_array('*', $this->getConfig('SupportedServers', array()));
+        $bFound = in_array('*', $this->oModuleSettings->SupportedServers);
 
         if (!$bFound) {
             $oServer = $oAccount->getServer();
 
-            if ($oServer && in_array($oServer->IncomingServer, $this->getConfig('SupportedServers'))) {
+            if ($oServer && in_array($oServer->IncomingServer, $this->oModuleSettings->SupportedServers)) {
                 $bFound = true;
             }
         }
@@ -113,10 +106,10 @@ class Module extends \Aurora\System\Module\AbstractModule
     {
         $bResult = false;
         if (0 < strlen($oAccount->getPassword()) && $oAccount->getPassword() !== $sPassword) {
-            $config_dbuser = $this->getConfig('DbUser', '');
-            $config_dbpass = $this->getConfig('DbPass', '');
-            $config_dbname = $this->getConfig('DbName', '');
-            $config_dbhost = $this->getConfig('DbHost', 'localhost');
+            $config_dbuser = $this->oModuleSettings->DbUser;
+            $config_dbpass = $this->oModuleSettings->DbPass;
+            $config_dbname = $this->oModuleSettings->DbName;
+            $config_dbhost = $this->oModuleSettings->DbHost;
 
             $mysqlcon = mysqli_connect($config_dbhost, $config_dbuser, $config_dbpass, $config_dbname);
             if ($mysqlcon) {
