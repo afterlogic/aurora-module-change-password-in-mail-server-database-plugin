@@ -7,6 +7,8 @@
 
 namespace Aurora\Modules\ChangePasswordInMailServerDatabasePlugin;
 
+use Aurora\Modules\Mail\Models\MailAccount;
+
 /**
  * Allows users to change passwords on their email accounts, assuming the passwords are stored in a database table.
  *
@@ -69,7 +71,7 @@ class Module extends \Aurora\System\Module\AbstractModule
         $bPasswordChanged = false;
         $bBreakSubscriptions = false;
 
-        $oAccount = $aArguments['Account'];
+        $oAccount = $aArguments['Account'] instanceof MailAccount ? $aArguments['Account'] : false;
         if ($oAccount && $this->checkCanChangePassword($oAccount) && $oAccount->getPassword() === $aArguments['CurrentPassword']) {
             $bPasswordChanged = $this->changePassword($oAccount, $aArguments['NewPassword']);
             $bBreakSubscriptions = true; // break if mail server plugin tries to change password in this account.
