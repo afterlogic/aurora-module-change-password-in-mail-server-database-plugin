@@ -25,7 +25,7 @@ class Module extends \Aurora\System\Module\AbstractModule
     public function init()
     {
         $this->subscribeEvent('Mail::Account::ToResponseArray', array($this, 'onMailAccountToResponseArray'));
-        $this->subscribeEvent('Mail::ChangeAccountPassword', array($this, 'onChangeAccountPassword'));
+        $this->subscribeEvent('ChangeAccountPassword', array($this, 'onChangeAccountPassword'));
     }
 
     /**
