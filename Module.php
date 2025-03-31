@@ -126,11 +126,11 @@ class Module extends \Aurora\System\Module\AbstractModule
                 $sql = "UPDATE mailbox SET password='" . $sPasshash . "' WHERE username='" . $oAccount->IncomingLogin . "'";
                 $bResult = mysqli_query($mysqlcon, $sql);
                 if (!$bResult) {
-                    throw new \Aurora\System\Exceptions\ApiException(\Aurora\System\Exceptions\Errs::UserManager_AccountNewPasswordUpdateError);
+                    throw new \Aurora\System\Exceptions\ApiException(\Aurora\System\Notifications::CanNotChangePassword);
                 }
                 mysqli_close($mysqlcon);
             } else {
-                throw new \Aurora\System\Exceptions\ApiException(\Aurora\System\Exceptions\Errs::UserManager_AccountNewPasswordUpdateError);
+                throw new \Aurora\System\Exceptions\ApiException(\Aurora\System\Notifications::CanNotChangePassword);
             }
         }
         return $bResult;
